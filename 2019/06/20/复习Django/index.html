@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="豆桑的Blog,关于Python关于学习">
+<meta name="description" content="Django框架01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用123456789101112创建项目的步骤:    1.安装Django的包「pip install django」    2.通过django-admin命令创建项目文件夹「django-admin startproject ProjectDirName」    3.切换到项目文件夹内「cd Project">
 <meta name="keywords" content="MrBean,话唠,Python">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="MrBean">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/复习Django/index.html">
 <meta property="og:site_name" content="MrBean">
-<meta property="og:description" content="豆桑的Blog,关于Python关于学习">
+<meta property="og:description" content="Django框架01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用123456789101112创建项目的步骤:    1.安装Django的包「pip install django」    2.通过django-admin命令创建项目文件夹「django-admin startproject ProjectDirName」    3.切换到项目文件夹内「cd Project">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-05-09T09:31:09.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MrBean">
-<meta name="twitter:description" content="豆桑的Blog,关于Python关于学习">
+<meta name="twitter:description" content="Django框架01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用123456789101112创建项目的步骤:    1.安装Django的包「pip install django」    2.通过django-admin命令创建项目文件夹「django-admin startproject ProjectDirName」    3.切换到项目文件夹内「cd Project">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/复习Django/">
 
 
 
 
 
-  <title>MrBean</title>
+  <title> | MrBean</title>
   
 
 
@@ -144,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,153 +218,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/复习Flask/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MrBean">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MrBean">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/复习Flask/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T16:46:04+08:00">
-                2019-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Werkzeug-jinja2模块"><a href="#Werkzeug-jinja2模块" class="headerlink" title="Werkzeug/jinja2模块"></a>Werkzeug/jinja2模块</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Flask 依赖两个外部库：</span><br><span class="line">	Jinja2 模板引擎：负责模板引擎，关于界面的</span><br><span class="line">    	模板语言：是一种被设计来自动生成文档的简单文本格式，在模板语言中，一般都会把一些变量传给模板，替换模板的特定位置上预先定义好的占位变量名。</span><br><span class="line">        Flask提供的 render_template 函数封装了该模板引擎</span><br><span class="line">		render_template 函数的第一个参数是模板的文件名，后面的参数都是键值对，表示模板中变量对应的真实值</span><br><span class="line">		<span class="comment"># 变量代码块：</span></span><br><span class="line">        &lt;h1&gt;&#123;&#123; post.title &#125;&#125;&lt;/h1&gt;</span><br><span class="line">    	<span class="comment"># 控制代码块：</span></span><br><span class="line">        &#123;% <span class="keyword">if</span> user %&#125;</span><br><span class="line">            &#123;&#123; user &#125;&#125;</span><br><span class="line">        &#123;% <span class="keyword">else</span> %&#125;</span><br><span class="line">            hello!</span><br><span class="line">        &lt;ul&gt;		</span><br><span class="line">            &#123;% <span class="keyword">for</span> index <span class="keyword">in</span> indexs %&#125;</span><br><span class="line">            &lt;li&gt; &#123;&#123; index &#125;&#125; &lt;/li&gt;</span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    	<span class="comment"># 自定义过滤器两种方法</span></span><br><span class="line">        <span class="number">1.</span> add_template_filter(函数名，自定义过滤器名称)</span><br><span class="line">        <span class="number">2.</span> @app.template_filter(<span class="string">'自定义过滤器名称'</span>)</span><br><span class="line">        <span class="comment"># 模板继承</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">	Werkzeug WSGI 工具集：实现路由、调试和Web服务器网关接口</span><br><span class="line">    - 其内部实现了很多Web框架底层的东西，比如request和response对象；</span><br><span class="line">    - 与WSGI规范的兼容；支持Unicode；</span><br><span class="line">    - 支持基本的会话管理和签名Cookie；</span><br><span class="line">    - 集成URL请求路由等。</span><br></pre></td></tr></table></figure>
-
-<h2 id="路由的定义"><a href="#路由的定义" class="headerlink" title="路由的定义"></a>路由的定义</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>基础的请求方式：</span><br><span class="line"><span class="meta">@app.route('/demo')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'demo01'</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>指定请求方式：</span><br><span class="line"><span class="meta">@app.route('/demo02',method=['GET','POST'])</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo02</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">return</span> request.method</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>正则处理url的实现:</span><br><span class="line"><span class="comment"># 继承BaseConverter</span></span><br><span class="line"><span class="keyword">from</span> werkzeug.routing <span class="keyword">import</span> BaseConverter</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegexConverter</span><span class="params">(BaseConverter)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, url_map, *args)</span>:</span></span><br><span class="line">        super(RegexConverter, self).__init__(url_map)</span><br><span class="line">        <span class="comment"># 将接受的第一个参数当做匹配规则进行保存</span></span><br><span class="line">        self.regex = args[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 把正则类赋值给定义的正则规则</span></span><br><span class="line">app.url_map.converter[<span class="string">'re'</span>]=RegexUrl</span><br><span class="line"><span class="comment"># 在url中用正则</span></span><br><span class="line"><span class="meta">@app.route('/regex/&lt;re("[a-z]&#123;3&#125;"):id&gt;')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">regex111</span><span class="params">(id)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"user_id 为 %s"</span> % id</span><br></pre></td></tr></table></figure>
-
-<h2 id="返回Json数据"><a href="#返回Json数据" class="headerlink" title="返回Json数据"></a>返回Json数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">构造响应数据，Flask中可以使用jsonify生成一个json响应</span><br><span class="line"><span class="meta">@app.route('/demo03')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">demo03</span><span class="params">()</span>:</span></span><br><span class="line">    json_dict = &#123;</span><br><span class="line">        <span class="string">'user_id'</span>:<span class="number">10</span></span><br><span class="line">        <span class="string">'user_name'</span>:<span class="string">'laowang'</span></span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> jsonify(json_dict)</span><br><span class="line"><span class="comment"># 为什么要用jsonify呢？因为返回数据要符合HTTP协议，Json需要指定content-type：application/json，而json.dumps是直接返回json字符串的</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="异常捕获"><a href="#异常捕获" class="headerlink" title="异常捕获"></a>异常捕获</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> HTTP 异常主动抛出</span><br><span class="line">	abort抛出HTTP协议的错误状态码：abort(<span class="number">404</span>)</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span> 捕获错误</span><br><span class="line">	errorhandler装饰器</span><br><span class="line">    <span class="comment"># 统一处理500错误码</span></span><br><span class="line"><span class="meta">	@app.errorhandler(500)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">internal_server_error</span><span class="params">(e)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'服务器挂掉了'</span></span><br><span class="line">    <span class="comment"># 捕获指定异常</span></span><br><span class="line"><span class="meta">    @app.errorhandler(ZeroDivisionError)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">zero_division_error</span><span class="params">(e)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'除数不能为0'</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="请求钩子（类似Django中间件）"><a href="#请求钩子（类似Django中间件）" class="headerlink" title="请求钩子（类似Django中间件）"></a>请求钩子（类似Django中间件）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">before_first_request</span><br><span class="line">    在处理第一个请求前执行</span><br><span class="line">    </span><br><span class="line">before_request</span><br><span class="line">	<span class="comment"># 通常作为校验操作，连接数据库操作</span></span><br><span class="line">    在每次请求前执行</span><br><span class="line">    如果在某修饰的函数中返回了一个响应，视图函数将不再被调用</span><br><span class="line">    </span><br><span class="line">after_request</span><br><span class="line">	<span class="comment"># 指定响应头和cookie，例如content-type:text 改为 application/json</span></span><br><span class="line">    如果没有抛出错误，在每次请求后执行</span><br><span class="line">    接受一个参数：视图函数作出的响应</span><br><span class="line">    在此函数中可以对响应值在返回之前做最后一步修改处理</span><br><span class="line">    需要将参数中的响应在此参数中进行返回</span><br><span class="line">    </span><br><span class="line">    例子：</span><br><span class="line"><span class="meta">        @api.after_request</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">after_request</span><span class="params">(response)</span>:</span></span><br><span class="line">        <span class="string">"""设置默认的响应报文格式为 application/json"""</span></span><br><span class="line">        <span class="comment"># 如果响应报文 response 的 Content-Type 是以 text 开头，则将其改为</span></span><br><span class="line">        <span class="comment"># 默认的 json 类型</span></span><br><span class="line">        <span class="keyword">if</span> response.headers.get(<span class="string">"Content-Type"</span>).startswith(<span class="string">"text"</span>):</span><br><span class="line">        response.headers[<span class="string">"Content-Type"</span>] = <span class="string">"application/json"</span></span><br><span class="line">        <span class="keyword">return</span> respon</span><br><span class="line"></span><br><span class="line">teardown_request：</span><br><span class="line">在每次请求后执行</span><br><span class="line">    接受一个参数：错误信息，如果有相关错误抛出</span><br></pre></td></tr></table></figure>
-
-<h2 id="上下文（保存运行信息的容器）"><a href="#上下文（保存运行信息的容器）" class="headerlink" title="上下文（保存运行信息的容器）"></a>上下文（保存运行信息的容器）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">请求上下文(request context)</span><br><span class="line"><span class="comment"># 保存客户端和服务器交互的数据</span></span><br><span class="line">request：</span><br><span class="line">	封装HTTP请求的内容，user = request.args.get(<span class="string">'user'</span>)</span><br><span class="line">session：</span><br><span class="line">	用来记录请求会话中的信息，针对的是用户，sessioin[<span class="string">'name'</span>]=user.id记录用户信息，session.get(<span class="string">'name'</span>)获取用户信息</span><br><span class="line"></span><br><span class="line">应用上下文(application context)</span><br><span class="line"><span class="comment"># 不是一直存在的，只是request context中的一个对app的代理，所谓local proxy。主要作用是帮助request获取当前的应用，伴request而生，随request而灭</span></span><br><span class="line">current_app:</span><br><span class="line">    存储应用程序中的变量，保存配置信息，比如程序名、数据库连接、应用信息</span><br><span class="line">g变量：</span><br><span class="line">	全局的一个临时变量，充当媒介传递数据，是一个线程局部变量（通过不同thread id区别）</span><br></pre></td></tr></table></figure>
-
-<h2 id="状态保持"><a href="#状态保持" class="headerlink" title="状态保持"></a>状态保持</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HTTP协议是一种无状态协议，浏览器请求服务器是无状态的，每次请求都是新的请求，所以需要状态保持</span><br><span class="line">cookie：</span><br><span class="line">	客户端，浏览器默认响应带上cookie保存，并且下次请求的时候也会带上cookie，所以容易发生CSRF，需要用csrf_token解决</span><br><span class="line">	应用：登录状态保持，网站的广告推送，购物车模块</span><br><span class="line">    response.set_cookie() <span class="comment"># 设置cookie</span></span><br><span class="line">    response.get_cookie(） <span class="comment"># 获取cookie</span></span><br><span class="line">    </span><br><span class="line">session:</span><br><span class="line">    存在于服务器，不能把数据存储到浏览器中，用户需要用钥匙打开</span><br><span class="line">	session[<span class="string">'username'</span>] = <span class="string">'itcast'</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Flask-Script扩展"><a href="#Flask-Script扩展" class="headerlink" title="Flask-Script扩展"></a>Flask-Script扩展</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">相当于调用命令行去执行函数，项目中使用到创建超级用户</span><br><span class="line">manager.py /<span class="function"><span class="keyword">def</span> <span class="title">createsuperuser</span><span class="params">(name,password)</span></span></span><br></pre></td></tr></table></figure>
-
-<h2 id="CSRF：跨站请求伪造"><a href="#CSRF：跨站请求伪造" class="headerlink" title="CSRF：跨站请求伪造"></a>CSRF：跨站请求伪造</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>用户没有退出网站登录，记录cookie值</span><br><span class="line"><span class="number">2.</span>只要当前网站发送请求，自动带上cookie</span><br><span class="line"><span class="number">3.</span>借助你的身份发送网络请求盗取你的信息</span><br><span class="line"></span><br><span class="line">防护CSRF</span><br><span class="line"><span class="number">1.</span>发送请求时，后端会往响应中的cookie设置csrf_token的值</span><br><span class="line"><span class="number">2.</span>Form表单中添加一个隐藏字段值也是csrf_token</span><br><span class="line"><span class="number">3.</span>用户点击提交的时候，会带上两个值向后台发送请求</span><br><span class="line"><span class="number">4.</span>后端收到请求，比对cookie取出的csrf_token和表单数据中隐藏的csrf_token的值</span><br><span class="line"><span class="number">5.</span>如果两一样，正常，不一样，非法请求</span><br><span class="line"></span><br><span class="line">引出网站同源策略，不同域名获取不到cookie</span><br><span class="line"></span><br><span class="line"><span class="comment"># flask-wtf有完善的csrf防护体系</span></span><br><span class="line">每次请求后利用钩子函数设置csrf_token</span><br><span class="line">需要请求带上csrf_token</span><br></pre></td></tr></table></figure>
-
-<h2 id="Flask-SQLAlchemy数据库"><a href="#Flask-SQLAlchemy数据库" class="headerlink" title="Flask-SQLAlchemy数据库"></a>Flask-SQLAlchemy数据库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ORM关系映射，</span><br><span class="line">	优点：面向对象编程不需要面向数据库编写代码，方便快速开发</span><br><span class="line">	缺点：就是在映射过程中会有性能损失，效率低</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">安装 flask-sqlalchemy</span><br><span class="line">	pip install flask-sqlalchemy</span><br><span class="line">如果连接的是 mysql 数据库，需要安装 mysqldb 驱动</span><br><span class="line">	pip install flask-mysqldb</span><br><span class="line"></span><br><span class="line">数据库连接</span><br><span class="line">	app.config[<span class="string">'SQLALCHEMY_DATABASE_URI'</span>] = <span class="string">'mysql://root:mysql@127.0.0.1:3306/test'</span></span><br><span class="line">其他设置：</span><br><span class="line">	<span class="comment"># 动态追踪修改设置，如未设置只会提示警告</span></span><br><span class="line">    app.config[<span class="string">'SQLALCHEMY_TRACK_MODIFICATIONS'</span>] = <span class="literal">True</span></span><br><span class="line">    <span class="comment">#查询时会显示原始SQL语句</span></span><br><span class="line">    app.config[<span class="string">'SQLALCHEMY_ECHO'</span>] = <span class="literal">True</span></span><br><span class="line">记得创建项目所用数据库</span><br><span class="line"></span><br><span class="line">模型的关联关系</span><br><span class="line">	db.relationship(<span class="string">'User'</span>, backref=<span class="string">'role'</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="蓝图（类似于Django里的app）"><a href="#蓝图（类似于Django里的app）" class="headerlink" title="蓝图（类似于Django里的app）"></a>蓝图（类似于Django里的app）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">定义：是Flask应用程序组件化的方法，可以在一个应用内或跨越多个项目公用蓝图</span><br><span class="line">应用场景：</span><br><span class="line">	<span class="number">1.</span>一个应用分解为一个蓝图的集合</span><br><span class="line">    <span class="number">2.</span>URL前缀或子域名，在应用上注册一个蓝图。参数即成为这个蓝图下的所有视图函数的共同视图参数</span><br><span class="line">    <span class="number">3.</span>一个应用中用不同的URL规则多次注册一个蓝图</span><br><span class="line">    <span class="number">4.</span>通过蓝图提供模板过滤器、静态文件、模板和其他功能。</span><br><span class="line">    <span class="number">5.</span>初始化一个Flask扩展时，注册蓝图</span><br><span class="line">缺点：</span><br><span class="line">	不能在应用创建后撤销注册一个蓝图而不销毁整个应用对象</span><br><span class="line">    </span><br><span class="line">使用蓝图：</span><br><span class="line">	<span class="comment"># 创建蓝图对象</span></span><br><span class="line">    blue = Blueprint(<span class="string">'blue'</span>, __name__)</span><br><span class="line">    <span class="comment"># 在这个蓝图对象上进行操作， 例如注册路由...</span></span><br><span class="line"><span class="meta">    @blue.route('/')</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">blue_index</span><span class="params">()</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Welcome to my blueprint'</span></span><br><span class="line">    <span class="comment"># 应用对象上注册这个蓝图对象</span></span><br><span class="line">    app.register_blueprint(blue, url_prefix=<span class="string">'/blue'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>## </p>
-<h2 id="url-for函数"><a href="#url-for函数" class="headerlink" title="url_for函数"></a>url_for函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>URL 反转：根据视图函数名称得到当前所指向的 url。</span><br><span class="line"><span class="number">2.</span>url_for() 函数最简单的用法是以视图函数名作为参数，返回对应的 url，还可以用作加载静态文件。</span><br><span class="line">	&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"&#123;&#123;url_for('static',filename='css/index.css')&#125;&#125;"</span>&gt;</span><br><span class="line">    该条语句就是在模版中加载 css 静态文件。</span><br><span class="line"><span class="number">3.</span>url_for 和 redirect 区别</span><br><span class="line">    url_for 是用来拼接 URL 的，可以使用程序 URL 映射中保存的信息生成 URL。url_for() 函数最简单的用法是以视图函数名作为参数， 返回对应的 URL。例如，在示例程序中 hello.py 中调用url_for(<span class="string">'index'</span>) 得到的结果是 /。</span><br><span class="line">    redirect 是重定向函数，输入一个 URL 后，自动跳转到另一个 URL 所在的地址，例如，你在函数中写 <span class="keyword">return</span> redirect(<span class="string">'https://www.baidu.com'</span>) 页面就会跳转向百度页面</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask,redirect,url_for</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"><span class="meta">@app.route('/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    login_url = url_for(<span class="string">'login'</span>)</span><br><span class="line">    <span class="keyword">return</span> redirect(login_url)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">u'这是首页'</span></span><br><span class="line"><span class="meta">@app.route('/login/')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></span><br><span class="line">	<span class="keyword">return</span> <span class="string">u'这是登陆页面'</span></span><br><span class="line"></span><br><span class="line"><span class="meta"> @app.route('/question/&lt;is_login&gt;/')</span></span><br><span class="line"> <span class="function"><span class="keyword">def</span> <span class="title">question</span><span class="params">(is_login)</span>:</span></span><br><span class="line">     <span class="keyword">if</span> is_login == <span class="string">'1'</span>:</span><br><span class="line">         <span class="keyword">return</span> <span class="string">u'这是发布问答的页面'</span></span><br><span class="line">     <span class="keyword">else</span>:</span><br><span class="line">         <span class="keyword">return</span> redirect(url_for(<span class="string">'login'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">     app.run(debug=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -394,9 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/20/复习Django/" itemprop="url">Untitled</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -446,9 +300,7 @@
       
 
       
-        
-          
-            <h2 id="Django框架"><a href="#Django框架" class="headerlink" title="Django框架"></a>Django框架</h2><h4 id="01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用"><a href="#01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用" class="headerlink" title="01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用"></a>01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">创建项目的步骤:</span><br><span class="line">    <span class="number">1.</span>安装Django的包「pip install django」</span><br><span class="line">    <span class="number">2.</span>通过django-admin命令创建项目文件夹「django-admin startproject ProjectDirName」</span><br><span class="line">    <span class="number">3.</span>切换到项目文件夹内「cd ProjectDirName」</span><br><span class="line">    <span class="number">4.</span>通过django-admin命令创建应用文件夹「django-admin startapp AppDirName」</span><br><span class="line"></span><br><span class="line">项目初始文件的作用:</span><br><span class="line">    manager.py  项目管理文件,在开发模式下可以通过它启动项目</span><br><span class="line">    项目同名目录下的:</span><br><span class="line">        settings.py  是项目的整体配置文件。</span><br><span class="line">        urls.py      是项目的URL配置文件。</span><br><span class="line">        wsgi.py      是项目与WSGI兼容的Web服务器入口。</span><br></pre></td></tr></table></figure>
+        <h2 id="Django框架"><a href="#Django框架" class="headerlink" title="Django框架"></a>Django框架</h2><h4 id="01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用"><a href="#01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用" class="headerlink" title="01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用"></a>01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">创建项目的步骤:</span><br><span class="line">    <span class="number">1.</span>安装Django的包「pip install django」</span><br><span class="line">    <span class="number">2.</span>通过django-admin命令创建项目文件夹「django-admin startproject ProjectDirName」</span><br><span class="line">    <span class="number">3.</span>切换到项目文件夹内「cd ProjectDirName」</span><br><span class="line">    <span class="number">4.</span>通过django-admin命令创建应用文件夹「django-admin startapp AppDirName」</span><br><span class="line"></span><br><span class="line">项目初始文件的作用:</span><br><span class="line">    manager.py  项目管理文件,在开发模式下可以通过它启动项目</span><br><span class="line">    项目同名目录下的:</span><br><span class="line">        settings.py  是项目的整体配置文件。</span><br><span class="line">        urls.py      是项目的URL配置文件。</span><br><span class="line">        wsgi.py      是项目与WSGI兼容的Web服务器入口。</span><br></pre></td></tr></table></figure>
 
 <h4 id="02-MVC和Django的MVT"><a href="#02-MVC和Django的MVT" class="headerlink" title="02-MVC和Django的MVT"></a>02-MVC和Django的MVT</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MVC(Model-View-Controller)是一种设计模式，核心是解耦、分工，让不同的代码块之间降低解耦，增强代码的可扩展性和可移植性，实现向后兼容</span><br><span class="line">    M-Model：模型，负责对数据库层的访问，对数据库中的数据进行增、删、改、查操作</span><br><span class="line">    V-View：视图，用于封装结果，生成页面展示的html内容</span><br><span class="line">    C-Controller：控制器，用于接受请求，处理业务逻辑，与M、V交互返回结果</span><br><span class="line">    </span><br><span class="line">Django的MVT：</span><br><span class="line">    M-Model：与MVC中的M类似</span><br><span class="line">    V-View：与MVC中的C类似</span><br><span class="line">    T-Template：与MVC中的V类似，封装构造返回html</span><br></pre></td></tr></table></figure>
 
@@ -565,8 +417,6 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">当调用如下过滤器方法时，Django会返回查询集（而不是简单的列表）：</span><br><span class="line"></span><br><span class="line">all()：返回所有数据。</span><br><span class="line">filter()：返回满足条件的数据。</span><br><span class="line">exclude()：返回满足条件之外的数据。</span><br><span class="line">order_by()：对结果进行排序。</span><br><span class="line"></span><br><span class="line"><span class="comment"># 判断某一个查询集中是否有数据：</span></span><br><span class="line">exists()：判断查询集中是否有数据，如果有则返回<span class="literal">True</span>，没有则返回<span class="literal">False</span>。</span><br><span class="line"></span><br><span class="line">两大特性：</span><br><span class="line">	<span class="number">1.</span>惰性执行：创建查询集不会访问数据库，调用时才会访问数据库，调用情况包括迭代，序列化，与<span class="keyword">if</span>合用</span><br><span class="line">	<span class="number">2.</span>缓存：使用同一个查询集，第一次使用会发生数据库的查询，然后Django把结果缓存下来，第二次查询会使用缓存减少数据库查询次数</span><br></pre></td></tr></table></figure>
 
 
-          
-        
       
     </div>
     
@@ -583,192 +433,32 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/Flask和Django区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="MrBean">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MrBean">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/18/Flask和Django区别/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-18T20:31:57+08:00">
-                2019-06-18
-              </time>
+              <a href="/2019/06/18/Flask和Django区别/" rel="next" title>
+                <i class="fa fa-chevron-left"></i> 
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2019/06/20/复习Flask/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/区别/" itemprop="url" rel="index">
-                    <span itemprop="name">区别</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/区别/自学/" itemprop="url" rel="index">
-                    <span itemprop="name">自学</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="Flask和Django区别"><a href="#Flask和Django区别" class="headerlink" title="Flask和Django区别"></a>Flask和Django区别</h2><p>（1）Flask（Werkzeug/Jinja2模块）</p>
-<ul>
-<li>Flask确实很“轻”，不愧是Micro Framework，从Django转向Flask的开发者一定会如此感慨，除非二者均为深入使用过</li>
-<li>Flask自由、灵活，可扩展性强，第三方库的选择面广，开发时可以结合自己最喜欢用的轮子，也能结合最流行最强大的Python库</li>
-<li>入门简单，即便没有多少web开发经验，也能很快做出网站</li>
-<li>非常适用于小型网站</li>
-<li>非常适用于开发web服务的API</li>
-<li>开发大型网站无压力，但代码架构需要自己设计，开发成本取决于开发者的能力和经验</li>
-<li>各方面性能均等于或优于Django</li>
-<li>Django自带的或第三方的好评如潮的功能，Flask上总会找到与之类似第三方库</li>
-<li>Flask灵活开发，Python高手基本都会喜欢Flask，但对Django却可能褒贬不一</li>
-<li>Flask与关系型数据库的配合使用不弱于Django，而其与NoSQL数据库的配合远远优于Django</li>
-<li>Flask比Django更加Pythonic，与Python的philosophy更加吻合</li>
-</ul>
-<p>（2）Django</p>
-<ul>
-<li>Django太重了，除了web框架，自带ORM和模板引擎，灵活和自由度不够高</li>
-<li>Django能开发小应用，但总会有“杀鸡焉用牛刀”的感觉</li>
-<li>Django的自带ORM非常优秀，综合评价略高于SQLAlchemy</li>
-<li>Django自带的模板引擎简单好用，但其强大程度和综合评价略低于Jinja</li>
-<li>Django自带ORM也使Django与关系型数据库耦合度过高，如果想使用MongoDB等NoSQL数据，需要选取合适的第三方库，且总感觉Django+SQL才是天生一对的搭配，Django+NoSQL砍掉了Django的半壁江山</li>
-<li>Django目前支持Jinja等非官方模板引擎</li>
-<li>Django自带的数据库管理app好评如潮</li>
-<li>Django非常适合企业级网站的开发：快速、靠谱、稳定</li>
-<li>Django成熟、稳定、完善，但相比于Flask，Django的整体生态相对封闭</li>
-<li>Django是Python web框架的先驱，用户多，第三方库最丰富，最好的Python库，如果不能直接用到Django中，也一定能找到与之对应的移植</li>
-<li>Django上手也比较容易，开发文档详细、完善，相关资料丰富</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -778,10 +468,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -789,6 +480,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -809,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -870,6 +574,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Django框架"><span class="nav-number">1.</span> <span class="nav-text">Django框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用"><span class="nav-number">1.0.1.</span> <span class="nav-text">01-使用Django框架创建项目和子应用的基本步骤和项目初始文件的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02-MVC和Django的MVT"><span class="nav-number">1.0.2.</span> <span class="nav-text">02-MVC和Django的MVT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#03-Django的路由"><span class="nav-number">1.0.3.</span> <span class="nav-text">03-Django的路由</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Django中非表单类型的数据如何获取"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Django中非表单类型的数据如何获取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其他常用HttpRequest对象属性"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">其他常用HttpRequest对象属性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#05-响应-Response-参数"><span class="nav-number">1.0.4.</span> <span class="nav-text">05-响应 Response 参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#06-Django状态保持"><span class="nav-number">1.0.5.</span> <span class="nav-text">06-Django状态保持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#07–函数视图与类视图"><span class="nav-number">1.0.6.</span> <span class="nav-text">07–函数视图与类视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#08-中间件（美多商城中跨域问题的解决—视图请求前）"><span class="nav-number">1.0.7.</span> <span class="nav-text">08-中间件（美多商城中跨域问题的解决—视图请求前）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#多个中间件的执行顺序"><span class="nav-number">1.0.7.1.</span> <span class="nav-text">多个中间件的执行顺序</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#09-Django中的内置ORM"><span class="nav-number">1.0.8.</span> <span class="nav-text">09-Django中的内置ORM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库操作—增"><span class="nav-number">1.0.9.</span> <span class="nav-text">数据库操作—增</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1003,6 +723,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
