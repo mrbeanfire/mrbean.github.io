@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,Django REST framework,Celery,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="美多项目串讲01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程 用户管理-注意接口分析：请求的方式、返回的数据 123456789101112131.注册	图片验证码，短信验证码，判断用户名是否存在，判断手机号是否存在，保存用户信息2.登录3.找回密码4.QQ登录5.个人中心6.邮件发送">
+<meta name="keywords" content="Python,Django REST framework,Celery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XX商城">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/复习meiduo项目/index.html">
+<meta property="og:site_name" content="MrBean">
+<meta property="og:description" content="美多项目串讲01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程 用户管理-注意接口分析：请求的方式、返回的数据 123456789101112131.注册	图片验证码，短信验证码，判断用户名是否存在，判断手机号是否存在，保存用户信息2.登录3.找回密码4.QQ登录5.个人中心6.邮件发送">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-06-20T10:15:35.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="XX商城">
+<meta name="twitter:description" content="美多项目串讲01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程 用户管理-注意接口分析：请求的方式、返回的数据 123456789101112131.注册	图片验证码，短信验证码，判断用户名是否存在，判断手机号是否存在，保存用户信息2.登录3.找回密码4.QQ登录5.个人中心6.邮件发送">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/复习meiduo项目/">
+
+
+
+
+
+  <title>XX商城 | MrBean</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MrBean</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">豆豆桑</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/复习meiduo项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MrBean">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrBean">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">XX商城</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T18:15:35+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="美多项目串讲"><a href="#美多项目串讲" class="headerlink" title="美多项目串讲"></a>美多项目串讲</h2><h4 id="01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）"><a href="#01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）" class="headerlink" title="01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）"></a>01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）</h4><h4 id="具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程"><a href="#具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程" class="headerlink" title="具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程"></a>具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程</h4><ul>
+<li><p>用户管理-注意接口分析：请求的方式、返回的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>注册</span><br><span class="line">	图片验证码，短信验证码，判断用户名是否存在，判断手机号是否存在，保存用户信息</span><br><span class="line"><span class="number">2.</span>登录</span><br><span class="line"><span class="number">3.</span>找回密码</span><br><span class="line"><span class="number">4.</span>QQ登录</span><br><span class="line"><span class="number">5.</span>个人中心</span><br><span class="line"><span class="number">6.</span>邮件发送和验证</span><br><span class="line"><span class="number">7.</span>用户浏览历史记录</span><br><span class="line"><span class="number">8.</span>修改密码</span><br><span class="line"><span class="number">9.</span>地址管理</span><br><span class="line">	省市区地址信息加载</span><br><span class="line">    新增修改删除地址</span><br><span class="line">    设置默认地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>商品</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>首页</span><br><span class="line">	商品分类</span><br><span class="line">	广告控制</span><br><span class="line"><span class="number">2.</span>商品列表页面</span><br><span class="line"><span class="number">3.</span>商品详情页面</span><br><span class="line"><span class="number">3.</span>搜索页</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>购物车</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>增</span><br><span class="line"><span class="number">2.</span>删</span><br><span class="line"><span class="number">3.</span>改</span><br><span class="line"><span class="number">4.</span>查</span><br><span class="line"><span class="number">5.</span>登录与未登录的保存</span><br><span class="line"><span class="number">6.</span>合并购物车-事务</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>订单部分</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>订单结算页面</span><br><span class="line"><span class="number">2.</span>保存订单</span><br><span class="line"><span class="number">3.</span>我的订单</span><br><span class="line"><span class="number">4.</span>订单评论</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>支付</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">支付宝支付</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="02-技术（具有通用性，什么时候用什么技术）"><a href="#02-技术（具有通用性，什么时候用什么技术）" class="headerlink" title="02-技术（具有通用性，什么时候用什么技术）"></a>02-技术（具有通用性，什么时候用什么技术）</h4><h4 id="着重复习的点"><a href="#着重复习的点" class="headerlink" title="着重复习的点"></a>着重复习的点</h4><ul>
+<li><p>跨域请求及解决（后端不存在跨域问题，可以请求完之后向前端响应数据）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>CORS解决跨域问题</span><br><span class="line">	安装cors-header</span><br><span class="line">    注册cors在中间件</span><br><span class="line">    添加白名单</span><br><span class="line"><span class="number">2.</span>后端引入CORS，</span><br><span class="line"><span class="number">3.</span>什么是跨域问题？</span><br><span class="line">	域：协议 + IP(域名) + 端口，只要有一个不对就会产生跨域问题</span><br><span class="line">    前后端分离肯定会跨域</span><br><span class="line"><span class="number">4.</span>安装扩展配置，使用CORS原理</span><br><span class="line"><span class="number">5.</span>先向后端发送option请求询问后端允许后端是否支持跨域请求</span><br><span class="line"><span class="number">6.</span>在中间件（请求来了自上而下）直接处理option请求，前端发送真正的业务请求</span><br><span class="line"><span class="number">7.</span>列出白名单</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JWT</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>选择JWT的原因？--优点</span><br><span class="line">	<span class="number">1.1</span> session机制-session的实现是在浏览器cookie中存放一个session的id，跨域之后就用不了</span><br><span class="line">	<span class="number">1.2</span> jwt没有跨域问题，可以放在cookie，也可以找个地方存起来，请求的时候把它带上了就可以了，前端手动携带JWT，所以可以避免跨域（相比于session）</span><br><span class="line">    <span class="number">1.3</span> jwt生成之后保存到前端，浏览器的sessionstorage和localstorage，保存在客户端，不占用服务器资源</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span>什么是JWT</span><br><span class="line">	json web token组成，主要有三部分，header、playload、signature</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> JWT相对安全的原因</span><br><span class="line">	签名部分联合前面的header、playload加上secret key经过数学计算生成的</span><br><span class="line">    </span><br><span class="line"><span class="number">4.</span> JWT的注意事项：保存好secret私钥，不要再payload保存敏感信息（密码）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>itsdangerous（找回密码，qq登录，对openid进行隐藏并且防止修改，邮箱验证）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>隐藏数据</span><br><span class="line"><span class="number">2.</span>判断数据是否修改</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三方登录（QQ登录，微博登录） </p>
+</li>
+<li><p>Oauth2.0机制 （访问的时候先拿到code，再通过code拿到access_token）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第三方登录的流程图</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发送邮件与邮件激活（更多关于业务逻辑）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">itsdangerous，django扩展，拼接邮件的连接token（有效期，会过期）</span><br><span class="line">实现重新发送邮件解决未接到邮件，邮件过期</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">缓存的好处--减少了数据库的查询次数</span><br><span class="line">缓存的原理--先去缓存查，没有再去数据库查，从数据库查出来先存进去缓存</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Celery异步任务处理队列（不想影响视图函数的执行就用celery）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">使用在比较耗时的场景</span><br><span class="line"><span class="number">1.</span>短信验证码 <span class="comment"># send_sms_code</span></span><br><span class="line"><span class="number">2.</span>发送邮件 <span class="comment"># send_verify_email</span></span><br><span class="line"><span class="number">3.</span>详情页面的静态化生成 <span class="comment"># generate_static_list_search_html</span></span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>Celery机制</span><br><span class="line">	客户端部分Django，任务的发起者</span><br><span class="line">	broker-消息中间人任务调度队列，是一个生产者消费者模式，broker不提供队列，需要第三方提供：redis <span class="comment"># 生产者把任务放入队列中，消费者worker从任务中取出任务执行，任务执行可以按照顺序依次执行或者计划时间进行</span></span><br><span class="line">    worker工作者完成任务的（任务的执行者），<span class="comment"># 定时从broker取出任务，多个任务的执行者从broker取出来，可以有多个并发</span></span><br><span class="line">    task result store执行结果的存储位置，最后保存</span><br><span class="line">    </span><br><span class="line">使用：客户端初始化</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SKU SPU概念</p>
+</li>
+<li><p>FastDFS图片存储</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">引入的原因：解决冗余存储，命名冲突（区分不同的图片），灵活扩展（横向：提升存储能力，纵向：同步备份存储）</span><br><span class="line">保存商品的图片</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">什么是Docker？</span><br><span class="line">镜像	容器</span><br><span class="line">操作</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>富文本编辑器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">什么是富文本编辑器？ckeditor</span><br><span class="line">实现的机制，将普通文本连同格式形成html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面静态化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">什么是页面静态化？ 把每次看到的同样数据简化返回成一个html，只静态公共的数据</span><br><span class="line">节省后端处理时间，提升性能</span><br><span class="line">原理，机制？</span><br><span class="line">使用的地方：首页，详情页，列表页（商品分类），搜索结果页面</span><br><span class="line">触发时机：定时任务-首页（过一段时间生成一次），修改数据的时候</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定时任务crontab</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">操作系统提供的命令</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>redis数据结构的设计</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">列表、字符串、哈希、集合</span><br><span class="line">用户的浏览历史：列表类型保存商品id</span><br><span class="line">购物车：哈希（存放的是购物车商品数量），集合（勾选状态）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列表页分页</p>
+</li>
+<li><p>搜索-全文检索-elasticsearch</p>
+</li>
+<li><p>haystack</p>
+</li>
+<li><p>索引数据的生成时机</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>原因：为什么引用数据库查询不用like查询（效率很低），因为它会提供索引更快的查询	</span><br><span class="line"><span class="number">2.</span>索引数据的生成时机：rebuild_index, HAYSTACK_SIGNAL_PROCESSOR 的配置保证了在Django运行起来后，有新的数据产生时，haystack仍然可以让Elasticsearch实时生成新数据的索引</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>购物车</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">登录与未登录的数据保存</span><br><span class="line">	redis</span><br><span class="line">	cookie pickle（把python字典转换成json数据要快过原生的很多，注意需要base64编码）</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>订单保存</p>
+<ul>
+<li><p>事务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据操作的时候要么一起成功要么一起失败</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>并发下单</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">几个用户抢同一个东西：</span><br><span class="line">悲观锁</span><br><span class="line">乐观锁（更新的同时检测一下数据有没有变化）---&gt; 数据库的事务隔离级别:Serializable串行化，Repeatable read可重复读，Read Committed读取已提交，Read uncommitted读取未提交</span><br><span class="line">任务队列</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li><p>支付宝支付</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">支付宝的流程图</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Xadmin</p>
+</li>
+<li><p>权限控制</p>
+<ul>
+<li>使用django的</li>
+<li>用户     组（一组权限的集合）     权限</li>
+<li>数据库的表关系</li>
+</ul>
+</li>
+<li><p>数据库的读写分离</p>
+<ul>
+<li>主从同步    从master写，从slave读</li>
+<li>读写分离-提升性能</li>
+</ul>
+</li>
+<li><p>部署</p>
+<ul>
+<li>服务器的结构（7台服务器）</li>
+<li>uwsgi</li>
+<li>nginx<ul>
+<li>提供静态文件</li>
+<li>负载均衡（反向代理）- 利用反向代理的能力实现负载均衡</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Django-REST-framework/" rel="tag"># Django REST framework</a>
+          
+            <a href="/tags/Celery/" rel="tag"># Celery</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/20/复习python基础+高级/" rel="next" title="Python基础+高级复习">
+                <i class="fa fa-chevron-left"></i> Python基础+高级复习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/20/复习Flask/" rel="prev" title="Flask复习">
+                Flask复习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MrBean</p>
+              <p class="site-description motion-element" itemprop="description">豆桑的Blog,关于Python关于学习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#美多项目串讲"><span class="nav-number">1.</span> <span class="nav-text">美多项目串讲</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）"><span class="nav-number">1.0.1.</span> <span class="nav-text">01-业务部分（实现的业务实现的思路，业务在具体视图当中处理的流程，收到了什么数据，给前端返回什么数据）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程"><span class="nav-number">1.0.2.</span> <span class="nav-text">具体实现的思路和步骤描述出来-业务的每一点实现的步骤和过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02-技术（具有通用性，什么时候用什么技术）"><span class="nav-number">1.0.3.</span> <span class="nav-text">02-技术（具有通用性，什么时候用什么技术）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#着重复习的点"><span class="nav-number">1.0.4.</span> <span class="nav-text">着重复习的点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MrBean</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

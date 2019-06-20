@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="SQL,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="省市区三级联动12345678910111213141516建表：    create table areas(        aid int primary key,        atitle varchar(20)        pid int    );查询省:	select count(*) from areas where pid is null;    查询广西省下的市：	selec">
+<meta name="keywords" content="SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL语法">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/复习—数据库/index.html">
+<meta property="og:site_name" content="MrBean">
+<meta property="og:description" content="省市区三级联动12345678910111213141516建表：    create table areas(        aid int primary key,        atitle varchar(20)        pid int    );查询省:	select count(*) from areas where pid is null;    查询广西省下的市：	selec">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-06-20T10:15:31.219Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL语法">
+<meta name="twitter:description" content="省市区三级联动12345678910111213141516建表：    create table areas(        aid int primary key,        atitle varchar(20)        pid int    );查询省:	select count(*) from areas where pid is null;    查询广西省下的市：	selec">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/复习—数据库/">
+
+
+
+
+
+  <title>SQL语法 | MrBean</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MrBean</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">豆豆桑</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/复习—数据库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MrBean">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrBean">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-20T18:15:31+08:00">
+                2019-06-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/自学/" itemprop="url" rel="index">
+                    <span itemprop="name">自学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="省市区三级联动"><a href="#省市区三级联动" class="headerlink" title="省市区三级联动"></a>省市区三级联动</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">建表：</span><br><span class="line">    create table areas(</span><br><span class="line">        aid int primary key,</span><br><span class="line">        atitle varchar(<span class="number">20</span>)</span><br><span class="line">        pid int</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">查询省:</span><br><span class="line">	select count(*) <span class="keyword">from</span> areas where pid <span class="keyword">is</span> null;</span><br><span class="line">    </span><br><span class="line">查询广西省下的市：</span><br><span class="line">	select city.* <span class="keyword">from</span> areas <span class="keyword">as</span> city inner join areas <span class="keyword">as</span> province on city.pid==province.aid where province.atitle=<span class="string">'广西省'</span>；</span><br><span class="line">    <span class="comment"># 自关联查询，as起别名city、as起别名province，通过两边查询的pid=aid决定</span></span><br><span class="line">	</span><br><span class="line">查询梧州市下的县：</span><br><span class="line">	select dis.* <span class="keyword">from</span> areas <span class="keyword">as</span> dis inner join areas <span class="keyword">as</span> city on city.aid==dis.pid where city.atitle=<span class="string">'梧州市'</span>；</span><br></pre></td></tr></table></figure>
+
+<h2 id="三范式和事务"><a href="#三范式和事务" class="headerlink" title="三范式和事务"></a>三范式和事务</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">第一范式：数据库表的每一列都是不可分割的原子数据项，即原子性，列不可拆分 <span class="comment"># 不可拆分</span></span><br><span class="line">第二范式：建立在第一范式的基础上，要求数据库表中的每个实例或记录必须可以被唯一地区分，即唯一标识（主键）。非主键完全依赖主键而不能依赖主键的一部分 <span class="comment"># 不依赖主键</span></span><br><span class="line">第三范式：建立在第二范式的基础上，任何非主属性不依赖于其他非主属性，即引用主键。不能存在：非主键列A依赖于非主键列B，非主键列B依赖于主键的情况 <span class="comment"># 任何非主属性不依赖主键</span></span><br><span class="line"></span><br><span class="line">----------</span><br><span class="line">事务：</span><br><span class="line">    原子性：事务中多个操作为一个整体，要么全部执行，要么全部失败，不能执行一部分</span><br><span class="line">    一致性：数据库中不会存在保存不一致的情况</span><br><span class="line">    持久性：一旦提交永久保存</span><br><span class="line">    隔离性：事务提交之前，对其他事务是不可见的</span><br><span class="line">    </span><br><span class="line">美多项目：</span><br><span class="line">    保存订单四个订单四个表同时保存，否则就是暴力回滚</span><br><span class="line">    <span class="comment"># 开启事务</span></span><br><span class="line">    <span class="keyword">with</span> transaction.atomic():</span><br><span class="line">        <span class="comment"># 创建保存点</span></span><br><span class="line">        save_id = transaction.savepoint()</span><br><span class="line">        <span class="comment"># 回滚到保存点</span></span><br><span class="line">        transaction.savepoint_rollback(save_id)</span><br><span class="line">        <span class="comment"># 提交从保存点到当前状态的所有数据库事务操作</span></span><br><span class="line">        transaction.savepoint_commit(save_id)</span><br><span class="line">----------</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据库优化"><a href="#数据库优化" class="headerlink" title="数据库优化"></a>数据库优化</h2><h4 id="01-数据库优化"><a href="#01-数据库优化" class="headerlink" title="01-数据库优化"></a>01-数据库优化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>mysql使用innodb，支持事务，并发性能更好，内容缓存页优化使得利用率更高</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>禁止使用外键，如果有外键完整性约束，需要应用程序控制，外键会增加表与表之间的耦合，update和delete操作都会涉及相关联的表，十分影响sql的性能</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>索引：是数据库管理系统中一个排序的数据结构，协助快速查询，更新数据库表中数据，索引的实现通常使用B_TREE,B_TREE索引加速了数据访问，因为存储引擎不会再去扫描整张表得到需要的数据；相反，它从根节点开始，根节点保存了子节点的指针，存储引擎会根据指针快速寻找数据</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>分库分表，把一些不经常读的数据放在一张表里，节约磁盘 I/O，主从配置(采用主从复制把数据库的读操作和写入操作分离开来)，双机热备份，主从配置详细</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>不能用select */<span class="keyword">in</span>/<span class="keyword">not</span> <span class="keyword">in</span>/like，会全局搜索，增加cpu、io、net消耗</span><br><span class="line"></span><br><span class="line"><span class="number">6.</span>避免where子句中对字段null的判断，会放弃索引从而全局搜索</span><br><span class="line"></span><br><span class="line"><span class="number">7.</span>避免where子句使用!= 或&lt;&gt;，会放弃索引从而全局搜索</span><br><span class="line"></span><br><span class="line"><span class="number">8.</span>避免where子句使用<span class="keyword">or</span>来连接条件，如果一个字段有索引，一个没有索引，将导致引擎放弃使用索引而进行全表扫描</span><br><span class="line"></span><br><span class="line"><span class="number">9.</span>对于多张大数据量的表JOIN，先分页再Join，否则性能很差</span><br><span class="line"></span><br><span class="line">10.严格按照数据库设计范式来设计数据库 ---&gt; 顺带提一下三范式，事务特性</span><br><span class="line">事务的原子性不可拆分，不依赖主键，任何非主属性不依赖主键</span><br><span class="line"></span><br><span class="line"><span class="number">11.</span>缓存型数据库，经常访问到的数据而且不需要经常变化的数据放在缓存中，能节约磁盘IO，redis</span><br><span class="line"></span><br><span class="line"><span class="number">12.</span>优化硬件，采用SSD，使用磁盘队列技术</span><br><span class="line"></span><br><span class="line"><span class="number">13.</span>页面静态化技术和分布式队列celery</span><br><span class="line"></span><br><span class="line"><span class="number">14.</span>隐式转换：对两个数据的比较、计算等如果数据类型不一致，且没有明确的转换数据类型时，数据库为了计算、比较会对某一个数据的数据类型进行隐式的转换。</span><br><span class="line"></span><br><span class="line"><span class="number">15.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="02-数据库解决高并发"><a href="#02-数据库解决高并发" class="headerlink" title="02-数据库解决高并发"></a>02-数据库解决高并发</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>缓存式的web应用程序架构</span><br><span class="line">	web层和DB层（数据库）层之间加一层cache层，主要目的：减少数据库读取负担，提高数据读取速度，cache的媒介是内存，可以采用分布式cache层</span><br><span class="line">    </span><br><span class="line"><span class="number">2.</span>增加redis缓存数据库</span><br><span class="line"><span class="number">3.</span>增加数据库索引</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>页面静态化技术</span><br><span class="line">	效率最高、消耗最小的就是纯静态化的html页面，所以我们尽可能将网页上经常重复的网页实现静态化处理实现，用户可以直接获取网页，不用想MVC结构走那么多流程，比较适用于页面信息大量被前台程序调用，但是更新率很小的情况，可以结合美多项目说一下</span><br><span class="line">	</span><br><span class="line"><span class="number">5.</span>使用存储过程</span><br><span class="line">	处理一次请求需要多次访问数据库的操作，可以把操作整合到储存过程，只要一次数据库访问即可</span><br><span class="line">    </span><br><span class="line"><span class="number">6.</span>MySQL主从读写分离</span><br><span class="line">	当数据库的写压力曾姐，cache层只能缓解数据库的读取压力，可以使用master-slave模式来达到读写分离，在主服务器上写，从服务器上读，基本原理是让主数据库处理事务性查询，而从数据库处理select查询，数据库复制被用于把事务性查询（增删改）导致的改变更新同步到集群中的从数据库</span><br><span class="line">    </span><br><span class="line"><span class="number">7.</span>分表分库</span><br><span class="line">	</span><br><span class="line"><span class="number">8.</span>负载均衡集群</span><br></pre></td></tr></table></figure>
+
+<h2 id="MySQL查询语句"><a href="#MySQL查询语句" class="headerlink" title="MySQL查询语句"></a>MySQL查询语句</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">select语句完整的执行顺序：</span><br><span class="line">	<span class="keyword">from</span> 子句组装不同数据源的数据</span><br><span class="line">    where 子句基于指定的条件对记录进行筛选</span><br><span class="line">    group by 子句将数据划分为多个分组</span><br><span class="line">    使用聚集函数进行计算count</span><br><span class="line">    使用having子句筛选分组</span><br><span class="line">    计算所有的表达式</span><br><span class="line">    select的字段</span><br><span class="line">    order by进行排序</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    inner join</span><br></pre></td></tr></table></figure>
+
+<p>## </p>
+<h2 id="Redis数据库"><a href="#Redis数据库" class="headerlink" title="Redis数据库"></a>Redis数据库</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">redis特点：</span><br><span class="line">	<span class="number">1.</span>虽然是内存型数据库，但也支持数据的持久化，可以将内存的数据保持在磁盘中</span><br><span class="line">	<span class="number">2.</span>支持丰富的数据类型，不单单是键值对，列表，集合，可排序集合，哈希等数据类型</span><br><span class="line">    <span class="number">3.</span>redis支持主从同步数据备份</span><br><span class="line">	<span class="number">4.</span>性能极高，基于C语言编写，读写速度十分快</span><br><span class="line">	<span class="number">5.</span>操作都是原子性的，从而确保两个客户同时访问redis服务器都是最新值</span><br><span class="line">    </span><br><span class="line">redis数据类型：</span><br><span class="line">    哈希hash：特别适合存储对象类型的数据</span><br><span class="line">    	常用命令为：hget，hset，hgetall</span><br><span class="line">    </span><br><span class="line">    列表list：用于存储一个有序的字符串列表，常用操作是往队列两端添加元素或者获得列表的某一片段</span><br><span class="line">    	常用命令：lpush，rpush，lpop，rpop，lrange等</span><br><span class="line">    </span><br><span class="line">    集合set：一组无序的字符集合，set中不会出现重复元素，相同元素只保留一个</span><br><span class="line">    	常用命令：sadd，spop，smembers，sunion等</span><br><span class="line">    </span><br><span class="line">    有序集合zset：有序集合是在集合基础上为每一个元素关联一个分数，redis通过分数为集中的成员进行排序</span><br><span class="line">    	常用命令：zadd，zrange，zrem，zcard</span><br><span class="line">    </span><br><span class="line">    字符串string： 可以包含任何数据，类型为key/value</span><br><span class="line">    	常用命令为：set，get，decr，incr，mget等</span><br><span class="line">    </span><br><span class="line"><span class="comment"># redis一个实例下有16个数据库，从0号数据库开始，默认端口为6379</span></span><br><span class="line"></span><br><span class="line">redis事务：事务是一个单独隔离的操作，也是原子性的，要么全部执行要么全部不执行</span><br><span class="line">开始事务 -&gt; 命令入队 -&gt; 执行事务</span><br></pre></td></tr></table></figure>
+
+<h2 id="redis的特点"><a href="#redis的特点" class="headerlink" title="redis的特点"></a>redis的特点</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">	<span class="number">1.</span>快：C语言实现的，把数据都存储到内存中，在内存中以key/value存储</span><br><span class="line">    <span class="number">2.</span>数据类型多：str、list、set、hash、zset</span><br><span class="line">    <span class="number">3.</span>数据的持久化：</span><br><span class="line">    	持久化：把存储在内存中的数据，写入本地的文件中</span><br><span class="line">    	在redis中默认使用快照（RDB）模式进行数据持久化，以二进制形式写入本地的dump.rdb</span><br><span class="line">    <span class="number">4.</span>主从配置：在主服务器上只进行写的操作，而从的服务器上进行读的操作</span><br><span class="line">    <span class="number">5.</span>分布式，高可用的架构</span><br><span class="line">    	高可用：使用redis自带的哨兵机制</span><br><span class="line">    <span class="number">6.</span>进行事务，发布，订阅模式</span><br><span class="line">    </span><br><span class="line">存储数据：</span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">conn = redis.StricRedis(<span class="string">'127.0.0.1'</span>,<span class="number">6379</span>)</span><br><span class="line">conn.lset(<span class="string">'key'</span>,<span class="string">'name'</span>)</span><br><span class="line">conn.lrange(<span class="string">'key'</span>,<span class="number">0</span>,<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">设置长连接</span><br><span class="line">修改redis.conf</span><br><span class="line">tcp-keepalive = <span class="number">0</span> <span class="comment"># 禁止长连接</span></span><br><span class="line">tcp-keepalive = <span class="number">1</span> <span class="comment"># 启动长连接</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/20/Flask和Django区别/" rel="next" title="Flask和Django区别">
+                <i class="fa fa-chevron-left"></i> Flask和Django区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/20/复习python基础+高级/" rel="prev" title="Python基础+高级复习">
+                Python基础+高级复习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">MrBean</p>
+              <p class="site-description motion-element" itemprop="description">豆桑的Blog,关于Python关于学习</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#省市区三级联动"><span class="nav-number">1.</span> <span class="nav-text">省市区三级联动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三范式和事务"><span class="nav-number">2.</span> <span class="nav-text">三范式和事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库优化"><span class="nav-number">3.</span> <span class="nav-text">数据库优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#01-数据库优化"><span class="nav-number">3.0.1.</span> <span class="nav-text">01-数据库优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02-数据库解决高并发"><span class="nav-number">3.0.2.</span> <span class="nav-text">02-数据库解决高并发</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL查询语句"><span class="nav-number">4.</span> <span class="nav-text">MySQL查询语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis数据库"><span class="nav-number">5.</span> <span class="nav-text">Redis数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis的特点"><span class="nav-number">6.</span> <span class="nav-text">redis的特点</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MrBean</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
