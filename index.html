@@ -233,6 +233,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/妙印云面试准备/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MrBean">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrBean">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/21/妙印云面试准备/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T18:59:24+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="面试前"><a href="#面试前" class="headerlink" title="面试前"></a>面试前</h2><ul>
+<li>自我介绍<ul>
+<li>如何从别的行业转型到python，机缘巧合erp，敏捷开发python</li>
+<li>大概5分钟介绍自己经历</li>
+</ul>
+</li>
+<li>项目经历<ul>
+<li>Django、Flask项目</li>
+<li>简历上技术点的丰润</li>
+<li>基于底层的协议<ul>
+<li>TCP/UDP</li>
+<li>HTTP/HTTPS</li>
+</ul>
+</li>
+<li>状态保持<ul>
+<li>JWToken</li>
+<li>cookie</li>
+<li>session</li>
+</ul>
+</li>
+<li>Restful设计风格</li>
+<li>Git</li>
+<li>描述自己写的接口内容</li>
+<li>geek自己的blog</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li><p>乐观锁（python第十一天，乐观锁解决资源抢夺</p>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Django项目用到<span class="number">5</span>台服务器。部署在<span class="number">2</span>台上面，因为用户量比较少。</span><br><span class="line"></span><br><span class="line">模拟抢购主要解决<span class="number">2</span>个问题：</span><br><span class="line">   <span class="number">1.</span>高并发对数据库产生的压力</span><br><span class="line">    <span class="number">2.</span>竞争状态下如何解决库存的正确减少（<span class="string">"超卖"</span>问题）</span><br><span class="line">对于第一个问题可以使用redis解决，避免对数据库的直接操作较少数据防护的查询压力。</span><br><span class="line"></span><br><span class="line">对于“超卖”项目中使用的是“乐观锁”解决的。</span><br><span class="line"></span><br><span class="line">防止黄牛代刷是个开放题目，下面提供几种思路：</span><br><span class="line"><span class="number">1.</span> 对于一个账号，一次发起多个请求。</span><br><span class="line">   在程序入口处，一个账号只允许接受<span class="number">1</span>个请求，其他请求过滤。实现方案，可以通过Redis这种内存缓存服务，写入一个标志位（只允许<span class="number">1</span>个请求写成功，结合watch的乐观锁的特性），成功写入的则可以继续参加。</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 对于账号一次发送多个请求</span><br><span class="line">    可以检测机器的ip发送请求的频率，假如某个固定ip的频率特别高，就弹出验证码来减少请求的频率。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">乐观锁的实现原理：</span><br><span class="line">     每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据。</span><br><span class="line">实现方式：可以在数据表中添加一个冗余字段，比如时间戳，在更新提交的时候检查当前数据库中数据的时间戳和自己更新前取到的时间戳进行对比，如果一致则OK，否则就是版本冲突 。</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>三个表把指定的内容拿到filter</span><br><span class="line"><span class="number">2.</span>接口调用（加上自己的想法</span><br><span class="line"><span class="number">3.</span>针对简历上的知识点复习</span><br><span class="line"><span class="number">4.</span>序列化器</span><br><span class="line"><span class="number">5.</span>restful风格</span><br><span class="line"><span class="number">6.</span>实际开发中遇到的bug，坑</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么从上家公司离职"><a href="#为什么从上家公司离职" class="headerlink" title="为什么从上家公司离职"></a>为什么从上家公司离职</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">离家远</span><br></pre></td></tr></table></figure>
+
+<h2 id="对加班如何看待"><a href="#对加班如何看待" class="headerlink" title="对加班如何看待"></a>对加班如何看待</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">做好自己的任务，没做好就责无旁贷加班</span><br></pre></td></tr></table></figure>
+
+<h2 id="上网的步骤"><a href="#上网的步骤" class="headerlink" title="上网的步骤"></a>上网的步骤</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 描述用浏览器访问 www.baidu.com 的过程(2018-4-16-lxy)</span></span><br><span class="line"><span class="number">1.</span>用户输入网址.</span><br><span class="line"><span class="number">2.</span>浏览器请求DNS服务器, 获取域名对应的IP地址.</span><br><span class="line"><span class="number">3.</span>请求连接该IP地址服务器.</span><br><span class="line"><span class="number">4.</span>发送资源请求. (HTTP协议)</span><br><span class="line"><span class="number">5.</span>web服务器接收到请求, 并解析请求, 判断用户意图.</span><br><span class="line"><span class="number">6.</span>获取用户想要的资源.</span><br><span class="line"><span class="number">7.</span>将资源返回给web服务器程序.</span><br><span class="line"><span class="number">8.</span>web服务器程序将资源数据通过网络发送给浏览器.</span><br><span class="line"><span class="number">9.</span>浏览器解析请求的数据并且完成网页数据的显示.</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/复习Django/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1522,7 +1683,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
